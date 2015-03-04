@@ -1,0 +1,12 @@
+D:\UnityGames\FlyingBox\Temp\bin\Release\Assembly-CSharp.dll
+D:\UnityGames\FlyingBox\Temp\bin\Release\Assembly-CSharp.pdb
+D:\UnityGames\FlyingBox\Temp\bin\Release\UnityEditor.dll
+D:\UnityGames\FlyingBox\Temp\bin\Release\UnityEngine.dll
+D:\UnityGames\FlyingBox\Temp\bin\Release\Mono.Cecil.dll
+D:\UnityGames\FlyingBox\Temp\bin\Release\nunit.framework.dll
+D:\UnityGames\FlyingBox\Temp\bin\Release\Unity.DataContract.dll
+D:\UnityGames\FlyingBox\Temp\bin\Release\ICSharpCode.NRefactory.dll
+D:\UnityGames\FlyingBox\obj\Release\Assembly-CSharp.dll
+D:\UnityGames\FlyingBox\obj\Release\Assembly-CSharp.pdb
+D:\UnityGames\FlyingBox\Temp\bin\Release\UnityEngine.UI.dll
+D:\UnityGames\FlyingBox\obj\Release\Assembly-CSharp.csprojResolveAssemblyReference.cache
