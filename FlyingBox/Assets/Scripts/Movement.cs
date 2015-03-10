@@ -1,78 +1,55 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Movement : MonoBehaviour
 {
+    public float FlapSpeed = 0.9f;
+    public bool Dead;
 
-    public float flapSpeed = 0.9f;
-
-    bool didFlap = false;
-    Animator animator;
-    public bool dead = false;
-    float deathCoolDown;
-    private Vector2 MoveUp = new Vector2(1, 1);
-    private Vector2 MoveDown = new Vector2(1, -1);
-    private Vector2 moveVector = Vector2.zero;
+    private Animator _animator;
+    private Rigidbody2D _rigidbody2D;
+    private bool _didFlap;
+    private readonly Vector2 _moveUp = new Vector2(1, 1);
+    private readonly Vector2 _moveDown = new Vector2(1, -1);
+    private Vector2 _moveVector = Vector2.zero;
 
     void Start()
     {
-        animator = GetComponentInChildren<Animator>();
+        _animator = GetComponentInChildren<Animator>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        if (dead)
+        if (!Dead)
         {
-            deathCoolDown -= Time.deltaTime;
-
-            /*if (deathCoolDown <= 0)
-            {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    Application.LoadLevel(Application.loadedLevel);
-                }
-            }*/
-        }
-        else
-        {
-
             if (Input.GetMouseButtonDown(0))
             {
-                didFlap = true;
+                _didFlap = true;
             }
         }
-        rigidbody2D.velocity = moveVector * flapSpeed;
-    }
-
-    void FixedUpdate()
-    {
+        _rigidbody2D.velocity = _moveVector * FlapSpeed;
         MoveLikeRustamNeed();
     }
 
-
     private void MoveLikeRustamNeed()
     {
-        if (dead)
-        { return; }
-
-        if (didFlap)
+        if (!Dead && _didFlap)
         {
-            didFlap = false;
-            if (moveVector == Vector2.zero)
+            _didFlap = false;
+            if (_moveVector == Vector2.zero)
             {
-                moveVector = MoveUp;
+                _moveVector = _moveUp;
             }
             else
             {
-                moveVector = moveVector == MoveUp ? MoveDown : MoveUp;
+                _moveVector = _moveVector == _moveUp ? _moveDown : _moveUp;
             }
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        animator.SetTrigger("Death");
-        dead = true;
-        deathCoolDown = 0.5f;
+        _animator.SetTrigger("Death");
+        Dead = true;
     }
 }

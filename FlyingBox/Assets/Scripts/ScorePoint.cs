@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class ScorePoint : MonoBehaviour
 {
-
-
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collider.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             Score.AddPoint();
         }

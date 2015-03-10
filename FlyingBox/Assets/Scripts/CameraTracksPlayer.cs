@@ -1,34 +1,22 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class CameraTracksPlayer : MonoBehaviour
 {
+    private Transform _playerTransform;
+    private float _offsetX;
 
-    Transform player;
-
-    float offsetX;
-    // Use this for initialization
     void Start()
     {
-        GameObject player_go = GameObject.FindGameObjectWithTag("Player");
-        if (player_go == null)
-        {
-            Debug.LogError("Couldn't find an object with tag 'Player'!");
-            return;
-        }
-
-        player = player_go.transform;
-
-        offsetX = transform.position.x - player.position.x;
+       _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+       _offsetX = transform.position.x - _playerTransform.position.x;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (player != null)
+        if (_playerTransform != null)
         {
             Vector3 pos = transform.position;
-            pos.x = player.position.x + offsetX;
+            pos.x = _playerTransform.position.x + _offsetX;
             transform.position = pos;
         }
     }

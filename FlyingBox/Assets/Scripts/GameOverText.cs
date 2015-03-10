@@ -1,27 +1,26 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class GameOverText : MonoBehaviour
 {
-
-
-    Movement player;
+    private Movement _movement;
 
     void Start()
     {
-        GameObject player_go = GameObject.FindGameObjectWithTag("Player");
-        if (player_go == null)
+        var playerGameObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerGameObject != null)
         {
-            Debug.LogError("Could not find an object with tag 'Player' ");
+            _movement = playerGameObject.GetComponent<Movement>();
         }
-        player = player_go.GetComponent<Movement>();
     }
 
     void Update()
     {
-        if (player.dead == true)
+        if (_movement != null && _movement.Dead)
         {
-            guiText.text = "GAME OVER";
+            if (GetComponent<GUIText>().text != "GAME OVER")
+            {
+                GetComponent<GUIText>().text = "GAME OVER";
+            }
         }
     }
 }

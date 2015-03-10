@@ -1,28 +1,28 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class StartScreenScript : MonoBehaviour
 {
+    static bool _sawOnce;
+    private SpriteRenderer _spriteRenderer;
 
-    static bool sawOnce = false;
-    // Use this for initialization
     void Start()
     {
-        if (!sawOnce)
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (!_sawOnce)
         {
-            GetComponent<SpriteRenderer>().enabled = true;
+            _spriteRenderer.enabled = true;
             Time.timeScale = 0;
         }
-        sawOnce = true;
+        _sawOnce = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Time.timeScale == 0 && Input.GetMouseButtonDown(0))
+        if (Time.timeScale == 0f && Input.GetMouseButtonDown(0))
         {
             Time.timeScale = 1;
-            GetComponent<SpriteRenderer>().enabled = true;
+            _spriteRenderer.enabled = true;
         }
     }
 }

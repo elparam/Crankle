@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public class BestScoreMainMenu : MonoBehaviour
 {
-
-    private Score _score;
     public Text BestScoreText;
+    private Score _score;
 
     void Start()
     {
@@ -14,6 +12,4 @@ public class BestScoreMainMenu : MonoBehaviour
         BestScoreText.text = string.Empty;
         BestScoreText.text = "BEST SCORE : " + _score.GetHighScore().ToString("D");
     }
-
-
 }

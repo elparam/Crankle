@@ -1,68 +1,56 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
-
 
 public class Score : MonoBehaviour
 {
+    private Movement _movement;
+    private GUIText _scoreGuiText;
 
-    static int score = 0;
-    static int highScore = 0;
-
-    static Score instance;
-
-
-    static public void AddPoint()
-    {
-        if (instance.player.dead)
-            return;
-
-        score++;
-
-        if (score > highScore)
-        {
-            highScore = score;
-                PlayerPrefs.SetInt("highScore", highScore);
-        }
-    }
-
-    Movement player;
+    private static int _score = 0;
+    private static int _highScore = 0;
+    private static Score _instance;
 
     void Start()
     {
-
-        instance = this;
-        GameObject player_go = GameObject.FindGameObjectWithTag("Player");
-        if (player_go == null)
-        {
-            Debug.LogError("Could not find an object with tag 'Player' ");
-        }
-        player = player_go.GetComponent<Movement>();
-        score = 0;
-        highScore = PlayerPrefs.GetInt("highScore", 0);
+        _instance = this;
+        _movement = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
+        _scoreGuiText = GetComponent<GUIText>();
+        _score = 0;
+        _highScore = PlayerPrefs.GetInt("highScore", 0);
     }
+
     void OnDestroy()
     {
-
-        PlayerPrefs.SetInt("highScore", highScore);
-        instance = null;        
+        PlayerPrefs.SetInt("highScore", _highScore);
+        _instance = null;
     }
+
     void Update()
     {
-        guiText.text = score.ToString("D"); ;
-        //+ "\n" + "High Score: " + highScore;
+        _scoreGuiText.text = _score.ToString("D");
+    }
 
+    static public void AddPoint()
+    {
+        if (_instance._movement.Dead) return;
+
+        _score++;
+
+        if (_score > _highScore)
+        {
+            _highScore = _score;
+            PlayerPrefs.SetInt("highScore", _highScore);
+        }
     }
 
     public int GetScore()
     {
-        return score;
+        return _score;
     }
 
     public int GetHighScore()
     {
-        highScore = PlayerPrefs.GetInt("highScore", 0);
-        return highScore;
+        _highScore = PlayerPrefs.GetInt("highScore", 0);
+        return _highScore;
     }
 }
 
