@@ -31,7 +31,7 @@ public class BarrierCreator : MonoBehaviour
         if (_lastBarrier != null)
         {
             position.y = _lastBarrier.transform.position.y + Random.Range(-GameData.BorderPositionDifference, GameData.BorderPositionDifference);
-            while (Mathf.Abs(position.y) > 3.5f)
+            while (Mathf.Abs(position.y) > 3f)
             {
                 position.y = _lastBarrier.transform.position.y + Random.Range(-GameData.BorderPositionDifference, GameData.BorderPositionDifference);
             }

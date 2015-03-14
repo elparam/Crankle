@@ -12,8 +12,14 @@ public class GameController : MonoBehaviour
 	    GameData.Speed = Speed;
         GameData.DistanceBetweenBorders = DistanceBetweenBorders;
         GameData.BorderPositionDifference = BorderPositionDifference;
+        GameData.ResetData();
 	}
 	
-	void Update () {
+	void Update () 
+    {
+	    if (GameData.Status == GameStatus.Playing)
+	    {
+	        GameData.PlayTime += Time.deltaTime;
+	    }
 	}
 }

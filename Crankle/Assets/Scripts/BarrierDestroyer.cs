@@ -12,6 +12,13 @@ public class BarrierDestroyer : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-       Destroy(other.transform.parent.gameObject);
+        if (other.transform.parent != null)
+        {
+            Destroy(other.transform.parent.gameObject);
+        }
+        else
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

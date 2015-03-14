@@ -7,22 +7,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private int _direction;
     private bool _isGameOver;
-    private float _timeScale = 1;
     
     void Start()
     {
-        PauseTheGame();
         _rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
-    }
-
-    void PauseTheGame()
-    {
-        Time.timeScale = 0;
-    }
-
-    void ResumeTheGame()
-    {
-        Time.timeScale = 1;
     }
 
     void Update()
@@ -37,7 +25,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_direction == 0)
         {
-            ResumeTheGame();
+            GameData.ResumeGame();
             transform.Rotate(new Vector3(0, 0, 45f), Space.World);
             _direction = 1;
             MoveBarriers();
@@ -56,13 +44,13 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Border"))
         {
             _isGameOver = true;
-            PauseTheGame();
+            GameData.StopGame();
         }
         else
         {
             if (other.CompareTag("PlusScore"))
             {
-                Score++;
+                GameData.CurrentScore++;
             }
         }
     }
