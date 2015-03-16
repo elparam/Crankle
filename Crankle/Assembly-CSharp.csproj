@@ -46,13 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\BarrierController.cs" />
-     <Compile Include="Assets\Scripts\BarrierCreator.cs" />
-     <Compile Include="Assets\Scripts\BarrierDestroyer.cs" />
-     <Compile Include="Assets\Scripts\GameController.cs" />
-     <Compile Include="Assets\Scripts\GameData.cs" />
-     <Compile Include="Assets\Scripts\PlayerController.cs" />
-     <Compile Include="Assets\Scripts\TailController.cs" />
+     <Compile Include="Assets\Scripts\Game\BarrierController.cs" />
+     <Compile Include="Assets\Scripts\Game\BarrierCreator.cs" />
+     <Compile Include="Assets\Scripts\Game\BarrierDestroyer.cs" />
+     <Compile Include="Assets\Scripts\Game\GameController.cs" />
+     <Compile Include="Assets\Scripts\Game\GameData.cs" />
+     <Compile Include="Assets\Scripts\Game\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Game\TailController.cs" />
+     <Compile Include="Assets\Scripts\Menu\ButtonStart.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
