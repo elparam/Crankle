@@ -15,28 +15,27 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!_isGameOver && Input.GetMouseButtonUp(0))
-        {
-            ChangeDirection();
-        }
     }
 
-    void ChangeDirection()
+    public void ChangeDirection()
     {
-        if (_direction == 0)
+        if (!_isGameOver)
         {
-            GameData.ResumeGame();
-            transform.Rotate(new Vector3(0, 0, 45f), Space.World);
-            _direction = 1;
-            MoveBarriers();
-        }
-        else
-        {
-            _direction = _direction * -1;
-            transform.Rotate(new Vector3(0, 0, _direction * 90), Space.World);
-        }
+            if (_direction == 0)
+            {
+                GameData.ResumeGame();
+                transform.Rotate(new Vector3(0, 0, 45f), Space.World);
+                _direction = 1;
+                MoveBarriers();
+            }
+            else
+            {
+                _direction = _direction*-1;
+                transform.Rotate(new Vector3(0, 0, _direction*90), Space.World);
+            }
 
-        _rigidbody2D.velocity = Vector2.up * GameData.Speed * _direction;
+            _rigidbody2D.velocity = Vector2.up*GameData.Speed*_direction;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)

@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
     public float PeriodBetweenTailParts;
     private float _playedTime;
 
+    private PlayerController _playerController;
+
 	void Start ()
 	{
 	    GameData.Speed = Speed;
@@ -24,4 +26,10 @@ public class GameController : MonoBehaviour
 	        GameData.PlayTime += Time.deltaTime;
 	    }
 	}
+
+    void OnMouseDown()
+    {
+        _playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        _playerController.ChangeDirection();
+    }
 }

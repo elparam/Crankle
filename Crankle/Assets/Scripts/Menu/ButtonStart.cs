@@ -10,15 +10,19 @@ public class ButtonStart : MonoBehaviour
     private GameObject _game;
     private GameObject _menu;
 
-	void Start ()
-	{
-	    _spriteRenderer = GetComponent<SpriteRenderer>();
-	    _nonPressedSprite = _spriteRenderer.sprite;
-	}
-	
-	void Update () {
-	
-	}
+   
+    void Start()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _nonPressedSprite = _spriteRenderer.sprite;
+        _game = GameObject.FindGameObjectWithTag("Game");
+        _menu = GameObject.FindGameObjectWithTag("Menu");
+       
+    }
+
+    void Update()
+    {
+    }
 
     private bool _isClicked = false;
 
@@ -40,11 +44,7 @@ public class ButtonStart : MonoBehaviour
 
     void StartTheGame()
     {
-
-
-        _menu = GameObject.FindGameObjectWithTag("Menu");
-        _game = GameObject.FindGameObjectWithTag("Game");
-        _menu.SetActive(false);
-        _game.SetActive(true);
+        _game.transform.position = Vector2.zero;
+        _menu.transform.position = Vector2.up * 100; ;
     }
 }
