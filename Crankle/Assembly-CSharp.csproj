@@ -54,6 +54,8 @@
      <Compile Include="Assets\Scripts\Game\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Game\TailController.cs" />
      <Compile Include="Assets\Scripts\Menu\ButtonStart.cs" />
+     <Compile Include="Assets\Scripts\Menu\GameAnimator.cs" />
+     <Compile Include="Assets\Scripts\Menu\MenuAnimator.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
